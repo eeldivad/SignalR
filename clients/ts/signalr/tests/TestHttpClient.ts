@@ -77,6 +77,11 @@ export class TestHttpClient extends HttpClient {
 
         return this;
     }
+
+    // tslint:disable-next-line:variable-name
+    public getCookies(_url: string): string {
+        return "";
+    }
 }
 
 function matches(pattern: string | RegExp, actual: string): boolean {

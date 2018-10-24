@@ -562,6 +562,15 @@ describe("hubConnection", () => {
                     });
                 });
             }
+
+            it("preserves cookies between requests", async (done) => {
+                const hubConnection = getConnectionBuilder(transportType).build();
+                await hubConnection.start();
+                const cookieValue = await hubConnection.invoke<string>("GetCookie", "testCookie");
+                expect(cookieValue).toEqual("testValue");
+                await hubConnection.stop();
+                done();
+            });
         });
     });
 
@@ -654,6 +663,10 @@ describe("hubConnection", () => {
                     return this.pollPromise;
                 }
                 return defaultClient.send(request);
+            }
+
+            public getCookies(): string {
+                return "";
             }
         }
 

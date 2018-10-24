@@ -141,4 +141,6 @@ export abstract class HttpClient {
      * @returns {Promise<HttpResponse>} A Promise that resolves with an HttpResponse describing the response, or rejects with an Error indicating a failure.
      */
     public abstract send(request: HttpRequest): Promise<HttpResponse>;
+
+    public abstract getCookies(url: string): string;
 }

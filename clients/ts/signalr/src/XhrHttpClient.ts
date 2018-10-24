@@ -84,4 +84,10 @@ export class XhrHttpClient extends HttpClient {
             xhr.send(request.content || "");
         });
     }
+
+    // Cookies aren't exposed in browser APIs
+    // tslint:disable-next-line:variable-name
+    public getCookies(_url: string): string {
+        return "";
+    }
 }
